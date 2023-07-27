@@ -4,6 +4,8 @@ import datetime
 import time
 
 check_url = 'http://www.baidu.com'
+username = hh
+passwd = dd
 def check_network():
     try:
         response = requests.get(check_url, timeout=3)
@@ -21,8 +23,8 @@ def login(query_string):
     login_url = 'http://172.19.1.9:8080/eportal/InterFace.do?method=login'
 
     data = {
-        'userId': '2020302191443',
-        'password': '12345.com',
+        'userId': username,
+        'password': passwd,
         'queryString': query_string,
         'service': 'Internet',
         'operatorPwd': '',
