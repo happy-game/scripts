@@ -117,6 +117,19 @@ if (-not(Test-Path "$($targetFolder)\ext4.vhdx") -And -not(Test-Path "$($targetF
     Exit 4;
 }
 
+# ask user to input default login user
+$defaultLoginUser = Read-Host "Enter default login user for $distro";
+if ($defaultLoginUser.Length -le 0)
+{
+    Write-Error 'Invalid default login user';
+    Exit 1;
+}
+else
+{
+    Write-Host "Setting default login user to $defaultLoginUser";
+    & cmd /c $distro config --default-user $defaultLoginUser;
+}
+
 Cleanup;
 
 Write-Host "Done!" -ForegroundColor Green;
